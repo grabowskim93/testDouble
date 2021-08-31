@@ -6,7 +6,6 @@ namespace App;
 
 final class BreaksControlSystem implements Breaks
 {
-    const MAX_PRESSURE = 5; //bar
 
     public function __construct(private Pressure $expectedPressure) {}
 
@@ -19,7 +18,10 @@ final class BreaksControlSystem implements Breaks
             throw new \RuntimeException('Cannot reduce to 0 bar. Danger to passengers\' lives.');
         }
 
-        if ($pressureSensor->current() < $this->expectedPressure->getPressure() && $pressureSensor->current() < self::MAX_PRESSURE) {
+        if (
+            $pressureSensor->current() < $this->expectedPressure->getPressure() &&
+            $pressureSensor->current() < Pressure::MAX_PRESSURE
+        ) {
             $breakPipe->pressureUp();
         }
 

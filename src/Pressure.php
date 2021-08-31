@@ -6,7 +6,8 @@ namespace App;
 
 class Pressure
 {
-    public const EMERGENCY_BREAKING = 0;
+    public const EMERGENCY_BREAKING = 0; //bar
+    public const MAX_PRESSURE = 5; //bar
 
     public function __construct(private int $pressure) {}
 
