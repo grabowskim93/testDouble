@@ -19,7 +19,7 @@ final class BreaksControlSystem implements Breaks
 
         if (
             $pressureSensor->current() < $this->expectedPressure->getPressure() &&
-            $this->expectedPressure->getPressure() < Pressure::MAX_PRESSURE
+            $this->expectedPressure->getPressure() <= Pressure::MAX_PRESSURE
         ) {
             $breakPipe->pressureUp();
         }
