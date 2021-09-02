@@ -6,7 +6,6 @@ namespace App;
 
 final class BreaksControlSystem implements Breaks
 {
-
     public function __construct(private Pressure $expectedPressure) {}
 
     public function control(PressureSensor $pressureSensor, BreakPipe $breakPipe) : void
@@ -20,7 +19,7 @@ final class BreaksControlSystem implements Breaks
 
         if (
             $pressureSensor->current() < $this->expectedPressure->getPressure() &&
-            $pressureSensor->current() < Pressure::MAX_PRESSURE
+            $this->expectedPressure->getPressure() < Pressure::MAX_PRESSURE
         ) {
             $breakPipe->pressureUp();
         }
